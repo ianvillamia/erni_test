@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:erni_test/data/products/products_service.dart';
+import 'package:erni_test/data/products/product_api_service.dart';
 import 'package:erni_test/products/domain/repository/products_repository.dart';
 import 'package:erni_test/products/domain/repository/products_repository_impl.dart';
 import 'package:get_it/get_it.dart';

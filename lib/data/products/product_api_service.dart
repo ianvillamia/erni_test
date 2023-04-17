@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:erni_test/products/domain/models/products_list_api_response.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'products_service.g.dart';
+part 'product_api_service.g.dart';
 
 @RestApi(baseUrl: 'https://dummyjson.com/')
 abstract class ProductsApiService {

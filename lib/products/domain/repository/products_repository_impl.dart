@@ -1,7 +1,7 @@
 import 'package:erni_test/core/models/product_dto.dart';
 import 'package:erni_test/core/providers/providers.dart';
 import 'package:erni_test/products/domain/repository/products_repository.dart';
-import 'package:erni_test/data/products/products_service.dart';
+import 'package:erni_test/data/products/product_api_service.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {
   const ProductsRepositoryImpl();
