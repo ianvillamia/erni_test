@@ -1,7 +1,8 @@
 import 'package:erni_test/core/providers/providers.dart';
 import 'package:erni_test/l10n/l10n.dart';
 import 'package:erni_test/products/view/products_list/cubit/product_list_cubit.dart';
-import 'package:erni_test/products/view/products_list/view/products_list.dart';
+import 'package:erni_test/products/view/products_list/products_list_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

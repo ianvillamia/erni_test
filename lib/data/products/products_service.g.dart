@@ -21,7 +21,7 @@ class _ProductsApiService implements ProductsApiService {
   String? baseUrl;
 
   @override
-  Future<dynamic> getProducts(
+  Future<ProductsListApiResponse> getProducts(
     limit,
     skip,
     select,
@@ -34,19 +34,20 @@ class _ProductsApiService implements ProductsApiService {
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ProductsListApiResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'products',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data;
+            .compose(
+              _dio.options,
+              'products',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ProductsListApiResponse.fromJson(_result.data!);
     return value;
   }
 

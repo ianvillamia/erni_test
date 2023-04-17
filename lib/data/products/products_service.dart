@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:erni_test/products/domain/models/products_list_api_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'products_service.g.dart';
@@ -15,7 +16,7 @@ abstract class ProductsApiService {
   /// skip - pagination - ex. page 2==20
   /// select - fields to be returned (title,price,thumbnail,stock,discountPercentage)
   @GET('products')
-  Future<dynamic> getProducts(
+  Future<ProductsListApiResponse> getProducts(
     @Query("limit") int limit,
     @Query("skip") int skip,
     @Query("select") String select,

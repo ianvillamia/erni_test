@@ -20,13 +20,13 @@ class ProductDto extends Equatable {
   Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
 
   @JsonKey(name: 'id')
-  final String? id;
+  final int? id;
 
   @JsonKey(name: 'title')
   final String? title;
 
   @JsonKey(name: 'price')
-  final int? price;
+  final double? price;
 
   @JsonKey(name: 'thumbnail')
   final String? thumbnail;
@@ -35,7 +35,7 @@ class ProductDto extends Equatable {
   final int? stock;
 
   @JsonKey(name: 'discountPercentage')
-  final int? discountPercentage;
+  final double? discountPercentage;
 
   @override
   List<Object?> get props => <Object?>[id, title, price, thumbnail, stock, discountPercentage];
