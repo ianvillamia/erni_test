@@ -1,6 +1,8 @@
+import 'package:erni_test/products/view/product_details/products_details_page.dart';
 import 'package:erni_test/products/view/products_list/cubit/product_list_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:erni_test/core/utils/custom_extensions.dart';
 
 class ProductsListPage extends StatefulWidget {
   const ProductsListPage({super.key});
@@ -43,7 +45,9 @@ class _ProductsListPageState extends State<ProductsListPage> {
                     child: Card(
                       elevation: 5,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, ProductDetails.route(products[index].id ?? 0));
+                        },
                         child: ListTile(
                           title: SizedBox(
                             width: MediaQuery.of(context).size.width,
@@ -63,15 +67,15 @@ class _ProductsListPageState extends State<ProductsListPage> {
                                 style: TextStyle(fontSize: 24),
                               ),
                               Text(
-                                '\$' + products[index].price.toString(),
+                                '\$ ${products[index].price.getStringValue()}',
                                 style: TextStyle(fontSize: 12),
                               ),
                               Text(
-                                '%' + products[index].discountPercentage.toString(),
+                                '% ${products[index].discountPercentage.getStringValue()}',
                                 style: TextStyle(fontSize: 12),
                               ),
                               Text(
-                                products[index].stock.toString() + ' items left',
+                                '${products[index].stock.getStringValue()} items left',
                                 style: TextStyle(fontSize: 12),
                               ),
                             ],

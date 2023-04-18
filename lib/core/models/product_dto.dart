@@ -12,6 +12,11 @@ class ProductDto extends Equatable {
     this.thumbnail,
     this.stock,
     this.discountPercentage,
+    this.description,
+    this.rating,
+    this.brand,
+    this.category,
+    this.images,
   });
 
   factory ProductDto.fromJson(Map<String, dynamic> json) {
@@ -25,17 +30,32 @@ class ProductDto extends Equatable {
   @JsonKey(name: 'title')
   final String? title;
 
+  @JsonKey(name: 'description')
+  final String? description;
+
   @JsonKey(name: 'price')
   final double? price;
 
-  @JsonKey(name: 'thumbnail')
-  final String? thumbnail;
+  @JsonKey(name: 'discountPercentage')
+  final double? discountPercentage;
+
+  @JsonKey(name: 'rating')
+  final double? rating;
 
   @JsonKey(name: 'stock')
   final int? stock;
 
-  @JsonKey(name: 'discountPercentage')
-  final double? discountPercentage;
+  @JsonKey(name: 'brand')
+  final String? brand;
+
+  @JsonKey(name: 'category')
+  final String? category;
+
+  @JsonKey(name: 'thumbnail')
+  final String? thumbnail;
+
+  @JsonKey(name: 'images')
+  final List<String>? images;
 
   @override
   List<Object?> get props => <Object?>[id, title, price, thumbnail, stock, discountPercentage];

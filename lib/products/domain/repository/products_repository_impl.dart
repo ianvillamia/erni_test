@@ -11,7 +11,6 @@ class ProductsRepositoryImpl implements ProductsRepository {
     try {
       final productsApiService = getIt<ProductsApiService>();
       final res = await productsApiService.getProducts(10, page * 10, 'title,price,thumbnail,stock,discountPercentage');
-      print(res);
       if (res.products?.isNotEmpty ?? false) {
         return res.products!;
       }
@@ -19,5 +18,13 @@ class ProductsRepositoryImpl implements ProductsRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  @override
+  Future<ProductDto?>? getProduct({required int id}) async {
+    final productsApiService = getIt<ProductsApiService>();
+    final res = await productsApiService.getProduct(id);
+    print(res);
+    return res;
   }
 }

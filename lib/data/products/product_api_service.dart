@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:erni_test/core/models/product_dto.dart';
 import 'package:erni_test/products/domain/models/products_list_api_response.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -21,4 +22,7 @@ abstract class ProductsApiService {
     @Query("skip") int skip,
     @Query("select") String select,
   );
+
+  @GET('products/{id}')
+  Future<ProductDto> getProduct(@Path('id') int id);
 }

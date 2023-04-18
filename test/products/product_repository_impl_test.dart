@@ -33,6 +33,10 @@ void main() {
     limit: 10,
     skip: 0,
   );
+  final product = ProductDto(
+    title: 'iPhone 9',
+  );
+
   setUp(() {
     mockApiService = MockProductsApiService();
     repository = ProductsRepositoryImpl();
@@ -56,5 +60,19 @@ void main() {
 
     // Verify that the repository returns the expected result
     expect(result, response.products);
+  });
+
+  test('returns a product when the API call is successful', () async {
+    // Set up the mock to return a successful response
+    when(() => mockApiService.getProduct(1)).thenAnswer((_) async => Future.value(product));
+
+    // Call the repository method under test
+    final result = await repository.getProduct(id: 1);
+
+    // Verify that the mock API service was called with the correct parameters
+    verify(() => mockApiService.getProduct(1));
+
+    // Verify that the repository returns the expected result
+    expect(result, product);
   });
 }

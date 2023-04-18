@@ -13,14 +13,25 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
       thumbnail: json['thumbnail'] as String?,
       stock: json['stock'] as int?,
       discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
+      description: json['description'] as String?,
+      rating: (json['rating'] as num?)?.toDouble(),
+      brand: json['brand'] as String?,
+      category: json['category'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'description': instance.description,
       'price': instance.price,
-      'thumbnail': instance.thumbnail,
-      'stock': instance.stock,
       'discountPercentage': instance.discountPercentage,
+      'rating': instance.rating,
+      'stock': instance.stock,
+      'brand': instance.brand,
+      'category': instance.category,
+      'thumbnail': instance.thumbnail,
+      'images': instance.images,
     };
