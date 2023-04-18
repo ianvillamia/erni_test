@@ -22,7 +22,16 @@ class ProductDetails extends StatelessWidget {
       create: (context) => ProductDetailsCubit(id),
       child: Scaffold(
         appBar: AppBar(title: Text('Item Details')),
-        body: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+        body: BlocConsumer<ProductDetailsCubit, ProductDetailsState>(
+          listener: (context, state) {
+            state.maybeWhen(
+                orElse: () {},
+                error: (error) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(error), duration: Duration(seconds: 2)),
+                  );
+                });
+          },
           builder: (context, state) {
             return state.maybeWhen(
                 loading: () => Center(child: CircularProgressIndicator()),

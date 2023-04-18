@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:erni_test/core/models/product_dto.dart';
 import 'package:erni_test/core/providers/providers.dart';
 import 'package:erni_test/products/domain/repository/products_repository.dart';
@@ -22,9 +23,13 @@ class ProductsRepositoryImpl implements ProductsRepository {
 
   @override
   Future<ProductDto?>? getProduct({required int id}) async {
-    final productsApiService = getIt<ProductsApiService>();
-    final res = await productsApiService.getProduct(id);
-    print(res);
-    return res;
+    try {
+      final productsApiService = getIt<ProductsApiService>();
+      final res = await productsApiService.getProduct(id);
+      print(res);
+      return res;
+    } on DioError catch (_) {
+      rethrow;
+    }
   }
 }

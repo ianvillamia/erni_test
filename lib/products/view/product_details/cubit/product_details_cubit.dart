@@ -14,8 +14,12 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   }
 
   void initialize() async {
-    emit(ProductDetailsState.loading());
-    final product = await getIt.get<ProductsRepository>().getProduct(id: id);
-    emit(ProductDetailsState.sucecss(product));
+    try {
+      emit(ProductDetailsState.loading());
+      final product = await getIt.get<ProductsRepository>().getProduct(id: id);
+      emit(ProductDetailsState.sucecss(product));
+    } catch (e) {
+      emit(ProductDetailsState.error('Something went wrong'));
+    }
   }
 }
